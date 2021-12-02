@@ -7,12 +7,14 @@
       <p>Lorem ipsum dolor sit amet.</p>
       <AppButton color="primary" v-if="!wasRead" @action="mark">Прочесть новость</AppButton>
       <AppButton color="danger" v-if="wasRead" @action="$emit('unmark', id)">Отметить не прочитаной</AppButton>
+      <AppNewsList/>
     </div>
   </div>
 </template>
 
 <script>
 import AppButton from "./AppButton";
+import AppNewsList from "./AppNewsList";
 
 export default {
   // props: ['title'],
@@ -73,7 +75,8 @@ export default {
     // }
   },
   components: {
-    AppButton
+    AppButton,
+     AppNewsList,
   }
 }
 </script>

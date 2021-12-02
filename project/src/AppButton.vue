@@ -16,6 +16,11 @@
           return ['', 'primary', 'danger'].includes(val)
         }
       }
+    },
+    methods: {
+      btnLog() {
+        console.log('btn log')
+      }
     }
   }
 </script>
