@@ -36,8 +36,40 @@
       }
     },
     methods: {
-      addPart(type, val) {
-        this.resumeParts.push({type, val})
+      async addPart(type, val) {
+
+        try {
+
+          const res = await fetch(this.urlResume(), { method: 'POST', body: JSON.stringify({type, val}) })
+
+          this.resumeParts.push({type, val, id: res.name})
+
+        } catch (e) {
+          console.log(e.message)
+        }
+
+      },
+      async loadParts() {
+
+        try {
+
+          const res = await fetch(this.urlResume(), { method: 'GET' })
+
+          const firebaseData = await res.json()
+
+          this.resumeParts = Object.keys(firebaseData).map((el) => {
+            return {
+              id: el,
+              ...firebaseData[el]
+            }
+          })
+
+          console.log(this.resumeParts)
+
+        } catch (e) {
+          console.log(e.message)
+        }
+
       },
       async getComments() {
 
@@ -55,7 +87,14 @@
           console.log(e.message)
         }
 
-      }
+      },
+      urlResume(param = null) {
+        if (param) return `https://vue-with-http-bdec1-default-rtdb.europe-west1.firebasedatabase.app/resume/${param}.json`
+        return `https://vue-with-http-bdec1-default-rtdb.europe-west1.firebasedatabase.app/resume.json`
+      },
+    },
+    mounted() {
+      this.loadParts()
     }
   }
 </script>

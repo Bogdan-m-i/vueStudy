@@ -3,7 +3,7 @@
 
     <h3 v-if="!resumeParts.length">Добавьте первый блок, чтобы увидеть результат</h3>
 
-    <component v-for="part in resumeParts" :is="'AppPart' + part.type">{{ part.val }}</component>
+    <component v-for="part in resumeParts" :key="part.id" :is="'AppPart' + part.type">{{ part.val }}</component>
 
   </div>
 </template>
