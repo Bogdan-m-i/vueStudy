@@ -14,7 +14,7 @@ export default {
     app.config.globalProperties.$i18n = key => {
       return key.split('.').reduce((words, k) => {
         console.log('words', words)
-        console.log('key', key)
+        console.log('key', k)
         console.log('words[k]', words[k])
         return words[k] || '== unknown =='
       }, options[current])
