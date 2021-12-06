@@ -10,11 +10,11 @@
 </template>
 
 <script>
-  export default {
-    name: "AppPeopleList",
-    emits: ['load', 'remove'],
-    props: ['people'],
-  }
+export default {
+  name: 'AppPeopleList',
+  emits: ['load', 'remove'],
+  props: ['people']
+}
 </script>
 
 <style scoped>

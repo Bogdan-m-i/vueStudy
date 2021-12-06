@@ -15,24 +15,24 @@
 </template>
 
 <script>
-  import AppModal from "./components/AppModal";
+import AppModal from './components/AppModal'
 
-  export default {
-    name: "App",
-    components: {AppModal},
-    inject: ['changeI18N'],
-    data() {
-      return {
-        modal: false,
-      }
-    },
-    methods: {
-      changeLang() {
-        this.changeI18N('en')
-        this.$forceUpdate()
-      }
+export default {
+  name: 'App',
+  components: { AppModal },
+  inject: ['changeI18N'],
+  data () {
+    return {
+      modal: false
+    }
+  },
+  methods: {
+    changeLang () {
+      this.changeI18N('en')
+      this.$forceUpdate()
     }
   }
+}
 </script>
 
 <style scoped>

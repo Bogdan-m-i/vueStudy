@@ -7,12 +7,12 @@
 </template>
 
 <script>
-  export default {
-    name: "TheHeader",
-    data: () => ({
-      title: 'The header',
-    })
-  }
+export default {
+  name: 'TheHeader',
+  data: () => ({
+    title: 'The header'
+  })
+}
 </script>
 
 <style scoped>

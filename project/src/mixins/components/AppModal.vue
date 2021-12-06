@@ -7,10 +7,10 @@
 </template>
 
 <script>
-  export default {
-    name: "AppModal",
-    emits: ['close'],
-  }
+export default {
+  name: 'AppModal',
+  emits: ['close']
+}
 </script>
 
 <style scoped>

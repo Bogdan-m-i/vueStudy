@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import AppButton from "./AppButton";
-import AppNewsList from "./AppNewsList";
+import AppButton from './AppButton'
+import AppNewsList from './AppNewsList'
 
 export default {
   // props: ['title'],
@@ -37,7 +37,7 @@ export default {
         return true
       }
     },
-    wasRead: Boolean,
+    wasRead: Boolean
   },
   emits: {
     'open-news' (num) {
@@ -45,16 +45,16 @@ export default {
       console.warn('no data in open-news emit')
       return false
     },
-    'read-news'(id) {
+    'read-news' (id) {
       if (id) return true
       console.warn('Нет параметра id для emit read-news')
       return false
     },
-    unmark(id) {
+    unmark (id) {
       if (id) return true
       console.warn('Нет параметра id для emit unmark')
       return false
-    },
+    }
   },
   data () {
     return {
@@ -66,17 +66,17 @@ export default {
       this.isNewsOpen = !this.isNewsOpen
       if (this.isNewsOpen) this.$emit('open-news', 42)
     },
-    mark() {
+    mark () {
       this.isNewsOpen = false
       this.$emit('read-news', this.id)
-    },
+    }
     // unmark() {
     //   this.$emit('unmark', this.id)
     // }
   },
   components: {
     AppButton,
-     AppNewsList,
+    AppNewsList
   }
 }
 </script>

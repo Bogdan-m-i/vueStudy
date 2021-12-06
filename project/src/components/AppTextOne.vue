@@ -9,9 +9,9 @@
 </template>
 
 <script>
-    export default {
-        name: "AppTextOne"
-    }
+export default {
+  name: 'AppTextOne'
+}
 </script>
 
 <style scoped>

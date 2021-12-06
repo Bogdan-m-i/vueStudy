@@ -23,36 +23,36 @@
 </template>
 
 <script>
-  import AppButton from "./AppButton";
-  import AppTextOne from "./AppTextOne";
-  import AppTextTwo from "./AppTextTwo";
+import AppButton from './AppButton'
+import AppTextOne from './AppTextOne'
+import AppTextTwo from './AppTextTwo'
 
-  export default {
-    name: 'App',
-    data() {
-      return {
-        active: 'one' //two
-      }
-    },
-    computed: {
-      componentName() {
-        if (this.active === 'one') return 'AppTextOne'
-        if (this.active === 'two') return 'AppTextTwo'
-      },
-      oneColor() {
-        return this.active === 'one' ? 'primary' : ''
-      },
-      twoColor() {
-        return this.active === 'two' ? 'primary' : ''
-      }
-    },
-    components: {
-      AppButton, AppTextOne, AppTextTwo
-    },
-    mounted() {
-      this.$refs.myBtn.btnLog()
+export default {
+  name: 'App',
+  data () {
+    return {
+      active: 'one' // two
     }
+  },
+  computed: {
+    componentName () {
+      if (this.active === 'one') return 'AppTextOne'
+      if (this.active === 'two') return 'AppTextTwo'
+    },
+    oneColor () {
+      return this.active === 'one' ? 'primary' : ''
+    },
+    twoColor () {
+      return this.active === 'two' ? 'primary' : ''
+    }
+  },
+  components: {
+    AppButton, AppTextOne, AppTextTwo
+  },
+  mounted () {
+    this.$refs.myBtn.btnLog()
   }
+}
 </script>
 
 <style lang="scss">

@@ -20,41 +20,41 @@
 </template>
 
 <script>
-  import AppButton from "./AppButton";
-  export default {
-    name: "AppForm",
-    components: {AppButton},
-    emits: ['add'],
-    data() {
-      return {
-        type: null,
-        val: '',
-        typeList: [
-          {id: 0, val: 'Title', text: 'Заголовок'},
-          {id: 0, val: 'Subtitle', text: 'Подзаголовок'},
-          {id: 0, val: 'Avatar', text: 'Аватар'},
-          {id: 0, val: 'Text', text: 'Текст'},
-        ]
-      }
-    },
-    computed: {
-      valValid() {
-        if (this.val.length > 3) return true
-        return false
-      },
-    },
-    methods: {
-      create() {
-        this.$emit('add', this.type, this.val)
-
-        this.type = this.typeList[0].val
-        this.val = ''
-      }
-    },
-    mounted() {
-      this.type = this.typeList[0].val
+import AppButton from './AppButton'
+export default {
+  name: 'AppForm',
+  components: { AppButton },
+  emits: ['add'],
+  data () {
+    return {
+      type: null,
+      val: '',
+      typeList: [
+        { id: 0, val: 'Title', text: 'Заголовок' },
+        { id: 0, val: 'Subtitle', text: 'Подзаголовок' },
+        { id: 0, val: 'Avatar', text: 'Аватар' },
+        { id: 0, val: 'Text', text: 'Текст' }
+      ]
     }
+  },
+  computed: {
+    valValid () {
+      if (this.val.length > 3) return true
+      return false
+    }
+  },
+  methods: {
+    create () {
+      this.$emit('add', this.type, this.val)
+
+      this.type = this.typeList[0].val
+      this.val = ''
+    }
+  },
+  mounted () {
+    this.type = this.typeList[0].val
   }
+}
 </script>
 
 <style scoped>

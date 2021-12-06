@@ -1,12 +1,12 @@
 export default {
-  data() {
+  data () {
     return {
       alert: false
     }
   },
   methods: {
-    toggleAlert() {
+    toggleAlert () {
       this.alert = !this.alert
     }
-  },
+  }
 }

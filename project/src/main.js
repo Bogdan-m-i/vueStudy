@@ -1,9 +1,13 @@
 import { createApp, defineAsyncComponent } from 'vue'
 import './theme.css'
 
-// Миксины директивы плагины
-import App from './mixins/App'
-import translatePlugin from "./mixins/translatePlugin";
+// 10 router
+import App from './router/App'
+import router from './router/router'
+
+// 9 Миксины директивы плагины
+// import App from './mixins/App'
+import translatePlugin from './mixins/translatePlugin'
 
 // 8 блок работа с БД
 // import App from "./back/App"
@@ -15,24 +19,25 @@ import translatePlugin from "./mixins/translatePlugin";
 // import App from './components/App.vue'
 // import TheHeader from "./components/TheHeader";
 
-
 const app = createApp(App)
 
+app.use(router)
+
 // Глобальный плагин
-const ru = {
-  app: {
-    title: 'Плагины во Vue',
-  }
-}
-const en = {
-  app: {
-    title: 'Plugins in Vue',
-  }
-}
-app.use(translatePlugin, {
-  ru,
-  en
-})
+// const ru = {
+//   app: {
+//     title: 'Плагины во Vue',
+//   }
+// }
+// const en = {
+//   app: {
+//     title: 'Plugins in Vue',
+//   }
+// }
+// app.use(translatePlugin, {
+//   ru,
+//   en
+// })
 
 // Глобальная директива v-focus
 // app.directive('focus', {

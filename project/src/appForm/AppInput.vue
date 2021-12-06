@@ -11,26 +11,26 @@
 </template>
 
 <script>
-  export default {
-    name: "AppInput",
-    emits: ['update:modelValue'],
-    props: {
-      modelValue: String,
-      placeholder: String,
-      label: String,
-      error: String,
-    },
-    data() {
-      return {
-        id: 'input-' + Math.random()
-      }
-    },
-    methods: {
-      change(event) {
-        this.$emit('update:modelValue', event.target.value)
-      }
+export default {
+  name: 'AppInput',
+  emits: ['update:modelValue'],
+  props: {
+    modelValue: String,
+    placeholder: String,
+    label: String,
+    error: String
+  },
+  data () {
+    return {
+      id: 'input-' + Math.random()
+    }
+  },
+  methods: {
+    change (event) {
+      this.$emit('update:modelValue', event.target.value)
     }
   }
+}
 </script>
 
 <style scoped>

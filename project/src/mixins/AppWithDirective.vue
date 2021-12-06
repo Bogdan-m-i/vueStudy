@@ -15,25 +15,24 @@
 </template>
 
 <script>
-  import focusDirective from "./focusDirective";
-  import colorDirective from "./colorDirective";
+import focusDirective from './focusDirective'
+import colorDirective from './colorDirective'
 
-  export default {
-    name: "AppWithDirective",
-    directives: {
-      focus: focusDirective,
-      color: colorDirective
-    },
-    data() {
-      return {
-        myColor: 'darkred',
-        type: 'color',
-      }
+export default {
+  name: 'AppWithDirective',
+  directives: {
+    focus: focusDirective,
+    color: colorDirective
+  },
+  data () {
+    return {
+      myColor: 'darkred',
+      type: 'color'
     }
   }
+}
 </script>
 
 <style scoped>
 
 </style>
-

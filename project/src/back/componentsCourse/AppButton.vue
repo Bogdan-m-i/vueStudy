@@ -5,11 +5,11 @@
 </template>
 
 <script>
-  export default {
-    name: "AppButton",
-    props: ['color', 'dis'],
-    emits: ['tuk'],
-  }
+export default {
+  name: 'AppButton',
+  props: ['color', 'dis'],
+  emits: ['tuk']
+}
 </script>
 
 <style scoped>

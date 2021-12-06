@@ -12,15 +12,15 @@
 </template>
 
 <script>
-  import AppAlert from "./components/AppAlert";
-  import AppBlock from "./components/AppBlock";
-  import alertMixin from "./alertMixin";
+import AppAlert from './components/AppAlert'
+import AppBlock from './components/AppBlock'
+import alertMixin from './alertMixin'
 
-  export default {
-    name: "AppWithMixins",
-    components: {AppBlock, AppAlert},
-    mixins: [alertMixin],
-  }
+export default {
+  name: 'AppWithMixins',
+  components: { AppBlock, AppAlert },
+  mixins: [alertMixin]
+}
 </script>
 
 <style scoped>

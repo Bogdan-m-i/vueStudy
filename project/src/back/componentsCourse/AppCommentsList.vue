@@ -11,12 +11,12 @@
 </template>
 
 <script>
-  import AppComment from "./AppComment";
-  export default {
-    name: "AppCommentsList",
-    props: ['comments'],
-    components: {AppComment}
-  }
+import AppComment from './AppComment'
+export default {
+  name: 'AppCommentsList',
+  props: ['comments'],
+  components: { AppComment }
+}
 </script>
 
 <style scoped>

@@ -8,10 +8,10 @@
 </template>
 
 <script>
-  export default {
-    name: "AppComment",
-    props: ['comment']
-  }
+export default {
+  name: 'AppComment',
+  props: ['comment']
+}
 </script>
 
 <style scoped>

@@ -5,12 +5,12 @@
 </template>
 
 <script>
-  export default {
-    name: "AppPartAvatar",
-    mounted() {
-      console.log(this.$slots.default()[0].children)
-    }
+export default {
+  name: 'AppPartAvatar',
+  mounted () {
+    console.log(this.$slots.default()[0].children)
   }
+}
 </script>
 
 <style scoped>

@@ -10,21 +10,19 @@ const getInterval = (el, color) => {
 }
 
 export default {
-  mounted(el, binding) {
+  mounted (el, binding) {
     console.log(el)
     console.log(binding)
 
     el.style[binding.arg] = binding.value
 
     if (binding.modifiers.blink) {
-
       el.style.transition = 'color 1s'
 
       interval = getInterval(el, binding.value)
-
     }
   },
-  updated(el, binding) {
+  updated (el, binding) {
     el.style[binding.arg] = binding.value
 
     if (interval) {
@@ -33,9 +31,8 @@ export default {
     }
 
     if (binding.modifiers.blink) interval = getInterval(el, binding.value)
-
   },
-  unmounted() {
+  unmounted () {
     if (interval) clearInterval(interval)
   }
 }

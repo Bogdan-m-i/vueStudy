@@ -7,11 +7,11 @@
 </template>
 
 <script>
-  export default {
-    name: "AppAlert",
-    props: ['alert'],
-    emits: ['close']
-  }
+export default {
+  name: 'AppAlert',
+  props: ['alert'],
+  emits: ['close']
+}
 </script>
 
 <style scoped>

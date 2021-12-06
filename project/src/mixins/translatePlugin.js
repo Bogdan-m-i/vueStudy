@@ -1,5 +1,5 @@
 export default {
-  install(app, options) {
+  install (app, options) {
     let current = 'ru'
 
     const changeLanguage = name => {

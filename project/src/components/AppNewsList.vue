@@ -7,10 +7,10 @@
 </template>
 
 <script>
-  export default {
-    name: "AppNewsList",
-    inject: ['title', 'news'],
-  }
+export default {
+  name: 'AppNewsList',
+  inject: ['title', 'news']
+}
 </script>
 
 <style scoped>

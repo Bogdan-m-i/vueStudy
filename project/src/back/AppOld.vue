@@ -22,112 +22,103 @@
 </template>
 
 <script>
-  import AppPeopleList from "./AppPeopleList";
-  import AppAlert from "./AppAlert";
-  import AppLoader from "./AppLoader";
+import AppPeopleList from './AppPeopleList'
+import AppAlert from './AppAlert'
+import AppLoader from './AppLoader'
 
-  export default {
-    name: "App",
-    components: {AppLoader, AppAlert, AppPeopleList },
-    data() {
-      return {
-        name: '',
-        people: [],
-        alert: null,
-        loading: false,
-      }
+export default {
+  name: 'App',
+  components: { AppLoader, AppAlert, AppPeopleList },
+  data () {
+    return {
+      name: '',
+      people: [],
+      alert: null,
+      loading: false
+    }
+  },
+  mounted () {
+    this.loadPeople()
+  },
+  methods: {
+    url (param = null) {
+      if (param) return `https://vue-with-http-bdec1-default-rtdb.europe-west1.firebasedatabase.app/people/${param}.json`
+      return 'https://vue-with-http-bdec1-default-rtdb.europe-west1.firebasedatabase.app/people.json'
     },
-    mounted() {
-      this.loadPeople()
-    },
-    methods: {
-      url(param = null) {
-        if (param) return `https://vue-with-http-bdec1-default-rtdb.europe-west1.firebasedatabase.app/people/${param}.json`
-        return `https://vue-with-http-bdec1-default-rtdb.europe-west1.firebasedatabase.app/people.json`
-      },
-      async createPerson() {
+    async createPerson () {
+      const res = await fetch(this.url(), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ firstName: this.name })
+      })
 
-        const res = await fetch(this.url(), {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ firstName: this.name })
-        })
+      const firebaseData = await res.json()
+      console.log('createPerson', firebaseData)
+
+      this.people.push({ firstName: this.name, id: firebaseData.name })
+      this.name = ''
+      // this.loadPeople()
+    },
+    async loadPeople () {
+      try {
+        this.loading = true
+
+        const res = await fetch(this.url(), { method: 'GET' })
 
         const firebaseData = await res.json()
-        console.log('createPerson', firebaseData)
+        console.log('loadPeople', firebaseData)
+        if (!firebaseData) throw new Error('Список людей пуст')
 
-        this.people.push({ firstName: this.name, id: firebaseData.name })
-        this.name = ''
-        // this.loadPeople()
-      },
-      async loadPeople() {
-
-        try {
-
-          this.loading = true
-
-          const res = await fetch(this.url(), { method: 'GET' })
-
-          const firebaseData = await res.json()
-          console.log('loadPeople', firebaseData)
-          if (!firebaseData) throw new Error('Список людей пуст')
-
-          this.people = Object.keys(firebaseData).map((el) => {
-            return {
-              id: el,
-              // firstName: firebaseData[el].firstName,
-              ...firebaseData[el]
-            }
-          })
-
-          this.loading = false
-
-        } catch (e) {
-          this.alert = {
-            type: 'danger',
-            title: 'Error',
-            text: e.message,
+        this.people = Object.keys(firebaseData).map((el) => {
+          return {
+            id: el,
+            // firstName: firebaseData[el].firstName,
+            ...firebaseData[el]
           }
-          this.loading = false
+        })
+
+        this.loading = false
+      } catch (e) {
+        this.alert = {
+          type: 'danger',
+          title: 'Error',
+          text: e.message
         }
+        this.loading = false
+      }
+    },
+    async removePers (id) {
+      try {
+        const res = await fetch(this.url(id), { method: 'DELETE' })
 
-      },
-      async removePers(id) {
+        const firebaseData = await res.json()
+        console.log('removePers', firebaseData)
 
-        try {
+        let nameForAlert
 
-          const res = await fetch(this.url(id), { method: 'DELETE' })
-
-          const firebaseData = await res.json()
-          console.log('removePers', firebaseData)
-
-          let nameForAlert
-
-          this.people = this.people.filter((el) => {
-            if (el.id !== id) {
-              return true
-            } else {
-              nameForAlert = el.firstName
-            }
-          })
-
-          this.alert = {
-            type: 'primary',
-            title: 'Успешно',
-            text: `Пользователь ${nameForAlert} был удален`
+        this.people = this.people.filter((el) => {
+          if (el.id !== id) {
+            return true
+          } else {
+            nameForAlert = el.firstName
           }
+        })
 
-        } catch (e) {
-          this.alert = {
-            type: 'danger',
-            title: 'Error',
-            text: e.message,
-          }
+        this.alert = {
+          type: 'primary',
+          title: 'Успешно',
+          text: `Пользователь ${nameForAlert} был удален`
         }
-
+      } catch (e) {
+        this.alert = {
+          type: 'danger',
+          title: 'Error',
+          text: e.message
+        }
       }
     }
   }
+}
 </script>
 
 <style scoped>

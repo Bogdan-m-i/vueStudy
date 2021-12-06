@@ -57,52 +57,52 @@
 </template>
 
 <script>
-  import AppInput from "./AppInput";
-  export default {
-    name: "App",
-    components: {AppInput},
-    data() {
-      return {
-        name: '',
-        age: 23,
-        city: 'msk',
-        relocate: '1',
-        skills: [],
-        agree: false,
-        errors: {
-          name: null
-        }
+import AppInput from './AppInput'
+export default {
+  name: 'App',
+  components: { AppInput },
+  data () {
+    return {
+      name: '',
+      age: 23,
+      city: 'msk',
+      relocate: '1',
+      skills: [],
+      agree: false,
+      errors: {
+        name: null
       }
+    }
+  },
+  methods: {
+    formIsValid () {
+      let isValid = true
+
+      if (!this.name.length) {
+        isValid = false
+        this.errors.name = 'Введите имя'
+      } else {
+        this.errors.name = null
+      }
+
+      return isValid
     },
-    methods: {
-      formIsValid() {
-        let isValid = true
-
-        if (!this.name.length) {
-          isValid = false
-          this.errors.name = 'Введите имя'
-        } else {
-          this.errors.name = null
-        }
-
-        return isValid
-      },
-      submitHandler() {
-        if (this.formIsValid()) {
-          console.group('form data')
-          console.log('name', this.name)
-          console.log('age', this.age)
-          console.log('city', this.city)
-          console.log('relocate', this.relocate)
-          console.log('skills', this.skills)
-          console.log('agree', this.agree)
-          console.groupEnd()
-        } else {
-          console.warn('form is not valid')
-        }
+    submitHandler () {
+      if (this.formIsValid()) {
+        console.group('form data')
+        console.log('name', this.name)
+        console.log('age', this.age)
+        console.log('city', this.city)
+        console.log('relocate', this.relocate)
+        console.log('skills', this.skills)
+        console.log('agree', this.agree)
+        console.groupEnd()
+      } else {
+        console.warn('form is not valid')
       }
     }
   }
+}
 </script>
 
 <style scoped>

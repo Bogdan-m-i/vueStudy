@@ -9,19 +9,19 @@
 </template>
 
 <script>
-  import AppPartTitle from "./resumeParts/AppPartTitle";
-  import AppPartSubtitle from "./resumeParts/AppPartSubtitle";
-  import AppPartText from "./resumeParts/AppPartText";
-  import AppPartAvatar from "./resumeParts/AppPartAvatar";
+import AppPartTitle from './resumeParts/AppPartTitle'
+import AppPartSubtitle from './resumeParts/AppPartSubtitle'
+import AppPartText from './resumeParts/AppPartText'
+import AppPartAvatar from './resumeParts/AppPartAvatar'
 
-  export default {
-    name: "AppResume",
-    props: ['resumeParts'],
-    components: { AppPartAvatar, AppPartText, AppPartSubtitle, AppPartTitle },
-    mounted() {
-      console.log(this.resumeParts)
-    }
+export default {
+  name: 'AppResume',
+  props: ['resumeParts'],
+  components: { AppPartAvatar, AppPartText, AppPartSubtitle, AppPartTitle },
+  mounted () {
+    console.log(this.resumeParts)
   }
+}
 </script>
 
 <style scoped>
