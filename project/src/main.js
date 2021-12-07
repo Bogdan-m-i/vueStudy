@@ -1,8 +1,12 @@
 import { createApp, defineAsyncComponent } from 'vue'
 import './theme.css'
 
+// 11 Vuex
+import App from './vuex/App'
+import store from './vuex/store'
+
 // 10 router
-import App from './router/App'
+// import App from './router/App'
 import router from './router/router'
 
 // 9 Миксины директивы плагины
@@ -21,7 +25,11 @@ import translatePlugin from './mixins/translatePlugin'
 
 const app = createApp(App)
 
-app.use(router)
+// 11
+app.use(store)
+
+// 10
+// app.use(router)
 
 // Глобальный плагин
 // const ru = {
