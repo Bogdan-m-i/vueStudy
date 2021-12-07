@@ -2,8 +2,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Login from './views/Login'
 import Forget from './views/Forget'
 import Dashboard from './views/Dashboard'
-import Mail from './views/Mail'
+// import Mail from './views/Mail'
 import AppEmailBody from './components/AppEmailBody'
+
+const Mail = () => import(/* webpackChunkName: "mail" */
+  /* webpackMode: "lazy-once" */'./views/Mail')
 
 const router = createRouter({
   history: createWebHistory(),
@@ -14,6 +17,7 @@ const router = createRouter({
     {
       path: '/mail',
       component: Mail,
+      name: 'email',
       children: [
         { path: ':id?', component: AppEmailBody, props: true }
       ]
