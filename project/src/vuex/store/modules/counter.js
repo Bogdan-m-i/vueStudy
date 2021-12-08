@@ -5,12 +5,12 @@ export default {
       counter: 1,
     }
   },
-  mutations: {
+  mutations: { // methods
     inc(state, payload) {
       state.counter += payload || 1
     }
   },
-  getters: {
+  getters: { // data()
     counter(state) {
       if (state.counter > 10) return state.counter + '!'
       return state.counter
@@ -19,7 +19,7 @@ export default {
       return state.counter * 2
     }
   },
-  actions: {
+  actions: { // async methods
     incAsync(context, payload) { // { commit } - возможная запись вместо context
       setTimeout(() => {
         context.commit('inc', payload || 10)

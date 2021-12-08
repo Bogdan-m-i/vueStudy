@@ -1,9 +1,12 @@
 import { createApp, defineAsyncComponent } from 'vue'
 import './theme.css'
 
+// 12 composition API
+import App from './compositionApi/App'
+
 // 11 Vuex
-import App from './vuex/App'
-import store from './vuex/store'
+// import App from './vuex/App'
+// import store from './vuex/store'
 
 // 10 router
 // import App from './router/App'
@@ -26,7 +29,7 @@ import translatePlugin from './mixins/translatePlugin'
 const app = createApp(App)
 
 // 11
-app.use(store)
+// app.use(store)
 
 // 10
 // app.use(router)
