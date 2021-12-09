@@ -4,9 +4,6 @@
       <h1>Vue Composition Api</h1>
       <small>data, computed, methods, watch</small>
       <hr>
-      <p>Название: <strong>{{ name }}</strong></p>
-      <p>Версия: <strong>{{ version }}</strong></p>
-      <p>Версия * 2: <strong>{{ doubleV }}</strong></p>
 
       <div class="form-control">
         <input type="text" ref="textInput" placeholder="ref">
@@ -18,18 +15,24 @@
 
       <button class="btn" @click="changeInfo">Изменить</button>
     </div>
+
+    <FrameworkInfo :name="name" :version="version" @change-version="changeVersion"/>
+
   </div>
 </template>
 
 <script>
-import { ref, reactive, toRefs, isRef, isReactive, computed, watch } from 'vue'
+import { ref, reactive, toRefs, isRef, isReactive, computed, watch, provide, onBeforeUpdate } from 'vue'
+import FrameworkInfo from "./FrameworkInfo";
 export default {
+  components: {FrameworkInfo},
   setup() {
     // const name = ref('VueJS')
     // const version = ref(2)
     const v = ref(3)
     const textInput = ref(null)
     const firstName = ref('')
+    const textForProvide = ref('text provide!!!')
 
     const framework = reactive({ // реактивный объект
       name: 'VueJS',
@@ -46,6 +49,12 @@ export default {
       console.log(textInput.value)
     }
 
+    function changeVersion() {
+      framework.version = 3
+    }
+
+    onBeforeUpdate(() => console.log('onBeforeUpdate'))
+
     const doubleV = computed(() => v.value * 2)
 
     watch(doubleV, (newValue, oldValue) => { // можно передать массив [doubleV, otherRefs], тогда newValue и oldValue будут массивами
@@ -54,6 +63,8 @@ export default {
     })
 
     watch(firstName, (newValue) => console.log('v-model firstName', newValue))
+
+    provide('text', textForProvide)
 
     return {
       // name,
@@ -66,6 +77,7 @@ export default {
       doubleV,
       textInput,
       firstName,
+      changeVersion,
     }
   }
   // data() {
