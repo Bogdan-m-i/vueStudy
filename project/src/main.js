@@ -1,10 +1,16 @@
 import { createApp, defineAsyncComponent } from 'vue'
 import './theme.css'
 
+// App
+import App from './app/App'
+import './app/registerServiceWorker'
+import router from './app/router'
+import store from './app/store'
+
 // course-3
-import App from "./course-3/App"
-import store from './course-3/store'
-import router from './course-3/router'
+// import App from "./course-3/App"
+// import store from './course-3/store'
+// import router from './course-3/router'
 
 // 12 composition API
 // import App from './compositionApi/App'
@@ -35,9 +41,13 @@ import translatePlugin from './mixins/translatePlugin'
 
 const app = createApp(App)
 
-// course-3
+// App
 app.use(store)
 app.use(router)
+
+// course-3
+// app.use(store)
+// app.use(router)
 
 // 12
 // app.use(router)
