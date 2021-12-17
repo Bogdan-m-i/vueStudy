@@ -1,8 +1,13 @@
 import {computed, watch} from 'vue'
+import {useStore} from 'vuex'
 import * as yup from 'yup'
 import {useField, useForm} from 'vee-validate'
+import {useRouter} from "vue-router";
 
 export function useLoginForm() {
+
+  const store = useStore()
+  const router = useRouter()
 
   const {handleSubmit, isSubmitting, submitCount} = useForm()
 
@@ -22,8 +27,10 @@ export function useLoginForm() {
     if (val) setTimeout(() => { submitCount.value = false }, 1500)
   })
 
-  const onSubmit = handleSubmit((values) => {
+  const onSubmit = handleSubmit(async (values) => {
     console.log("-> values", values);
+    await store.dispatch('auth/login', values)
+    router.push('/')
   })
 
   return {email, eError, eBlur, password, pError, pBlur, onSubmit, isSubmitting, isTooManyAttempts}

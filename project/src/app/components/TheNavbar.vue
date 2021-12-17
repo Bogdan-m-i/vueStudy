@@ -12,15 +12,29 @@
         <a href="#">Messages</a>
       </li>
       <li>
-        <a href="#">Exit</a>
+        <a href="#" @click.prevent="logout">Exit</a>
       </li>
     </ul>
   </nav>
 </template>
 
 <script>
+  import {useRouter} from 'vue-router'
+  import {useStore} from 'vuex'
+
   export default {
-    name: "TheNavabar"
+    name: "TheNavabar",
+    setup() {
+      const router = useRouter()
+      const store = useStore()
+
+      function logout() {
+        store.commit('auth/logout')
+        router.push('/auth')
+      }
+
+      return { logout }
+    }
   }
 </script>
 

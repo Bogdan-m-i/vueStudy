@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import store from '../store'
 
 const routes = [
   {
@@ -8,14 +9,16 @@ const routes = [
     component: Home,
     meta: {
       layout: 'main',
+      auth: true,
     }
   },
   {
     path: '/help',
-    name: 'About',
+    name: 'Help',
     component: () => import('../views/Help.vue'),
     meta: {
       layout: 'main',
+      auth: true,
     }
   },
   {
@@ -24,6 +27,7 @@ const routes = [
     component: () => import('../views/Auth'),
     meta: {
       layout: 'auth',
+      auth: false,
     }
   }
 ]
@@ -31,6 +35,18 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+
+  const requireAuth = to.meta.auth
+
+  if (requireAuth && store.getters['auth/isAuth']) return next()
+
+  if (requireAuth && !store.getters['auth/isAuth']) return next('/auth?message=auth')
+
+  next()
+
 })
 
 export default router
