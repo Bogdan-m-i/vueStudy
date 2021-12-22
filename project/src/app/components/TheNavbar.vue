@@ -6,7 +6,7 @@
         <router-link to="/">Orders</router-link>
       </li>
       <li>
-        <router-link to="/">Help</router-link>
+        <router-link to="/help">Help</router-link>
       </li>
       <li>
         <a href="#">Messages</a>

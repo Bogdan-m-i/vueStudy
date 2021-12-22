@@ -28,9 +28,10 @@ export function useLoginForm() {
   })
 
   const onSubmit = handleSubmit(async (values) => {
-    console.log("-> values", values);
-    await store.dispatch('auth/login', values)
-    router.push('/')
+    try {
+      await store.dispatch('auth/login', values)
+      router.push('/')
+    } catch (e) {}
   })
 
   return {email, eError, eBlur, password, pError, pBlur, onSubmit, isSubmitting, isTooManyAttempts}
