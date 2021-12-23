@@ -46,9 +46,65 @@ export default {
         const {data} = await requestAxios.get(`/requests.json?auth=${token}`)
 
         const requests = Object.keys(data).map((k) => ({...data[k], id: k}))
-        console.log("-> data", requests);
 
         context.commit('setRequests', requests)
+
+      } catch (e) {
+
+        await context.dispatch('setMessage', {
+          value: e.message,
+          type: 'danger'
+        }, {root: true})
+
+      }
+    },
+    async loadById(context, id) {
+      try {
+
+        const token = store.getters['auth/token']
+        const {data} = await requestAxios.get(`/requests/${id}.json?auth=${token}`)
+
+        if (data) return data
+
+      } catch (e) {
+
+        await context.dispatch('setMessage', {
+          value: e.message,
+          type: 'danger'
+        }, {root: true})
+
+      }
+    },
+    async remove(context, id) {
+      try {
+
+        const token = store.getters['auth/token']
+        await requestAxios.delete(`/requests/${id}.json?auth=${token}`)
+
+        context.dispatch('setMessage', {
+          value: 'Request removed',
+          type: 'primary'
+        }, {root: true})
+
+      } catch (e) {
+
+        await context.dispatch('setMessage', {
+          value: e.message,
+          type: 'danger'
+        }, {root: true})
+
+      }
+    },
+    async update(context, payload) {
+      try {
+
+        const token = store.getters['auth/token']
+        await requestAxios.put(`/requests/${payload.id}.json?auth=${token}`, payload.data)
+
+        context.dispatch('setMessage', {
+          value: 'Request updated',
+          type: 'primary'
+        }, {root: true})
 
       } catch (e) {
 

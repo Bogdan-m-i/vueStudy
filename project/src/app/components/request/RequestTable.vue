@@ -24,9 +24,9 @@
         <AppStatus :type="r.status"/>
       </td>
       <td>
-        <!--          <router-link v-slot="{navigate}" custom :to="{ name: 'Request', params: {id: r.id} }">-->
-        <!--            <button class="btn primary" @click="navigate">Open</button>-->
-        <!--          </router-link>-->
+        <router-link v-slot="{navigate}" custom :to="{ name: 'Request', params: {id: r.id} }">
+          <button class="btn" @click="navigate">Open</button>
+        </router-link>
       </td>
     </tr>
     </tbody>

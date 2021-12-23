@@ -1,4 +1,7 @@
 <template>
+  <div class="breadcrumbs" v-if="back">
+    <router-link to="/">Back home</router-link>
+  </div>
   <div class="card">
     <h1 class="card-title">
       {{title}}
@@ -16,7 +19,8 @@
       title: {
         type: String,
         required: true,
-      }
+      },
+      back: {type: Boolean}
     },
     setup(props) {
       document.title = `${props.title} | App`

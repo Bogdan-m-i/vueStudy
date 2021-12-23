@@ -12,9 +12,13 @@
       <RequestTable :requests="requests"/>
 
       <teleport to="body">
-        <app-modal v-if="modal" @close="modal = false" title="Создать заявку">
-          <RequestModal @created="modal = false"/>
-        </app-modal>
+
+        <transition name="modal">
+          <app-modal v-if="modal" @close="modal = false" title="Создать заявку">
+            <RequestModal @created="modal = false"/>
+          </app-modal>
+        </transition>
+
       </teleport>
     </template>
 
@@ -68,3 +72,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+
+</style>

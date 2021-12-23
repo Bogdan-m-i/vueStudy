@@ -293,18 +293,6 @@ h3 {
     border-radius: 10px;
     transform: translateX(-50%);
     box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.2);
-    animation: slide-down .3s ease;
-}
-
-@keyframes slide-down {
-    0% {
-        top: -300px;
-        opacity: 0;
-    }
-    100% {
-        top: 60px;
-        opacity: 1;
-    }
 }
 
 .modal-backdrop {
@@ -482,6 +470,10 @@ h3 {
 
 .breadcrumbs {
     margin-bottom: .5rem;
+}
+
+.breadcrumbs a {
+    color: white;
 }
 
 .filter {

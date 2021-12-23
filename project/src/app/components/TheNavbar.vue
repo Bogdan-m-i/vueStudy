@@ -9,7 +9,7 @@
         <router-link to="/help">Help</router-link>
       </li>
       <li>
-        <a href="#">Messages</a>
+        <a href="#" @click="openSidebar">Messages</a>
       </li>
       <li>
         <a href="#" @click.prevent="logout">Exit</a>
@@ -28,12 +28,14 @@
       const router = useRouter()
       const store = useStore()
 
-      function logout() {
+      const logout = () => {
         store.commit('auth/logout')
         router.push('/auth')
       }
 
-      return { logout }
+      const openSidebar = () => store.commit('openSidebar')
+
+      return { logout, openSidebar }
     }
   }
 </script>

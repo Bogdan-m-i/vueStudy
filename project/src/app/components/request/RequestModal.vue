@@ -23,9 +23,9 @@
       <label for="status">Status</label>
       <select name="status" id="status" v-model="status">
         <option value="done">Done</option>
-        <option value="canceled">Canceled</option>
+        <option value="cancelled">Cancelled</option>
         <option value="active">Active</option>
-        <option value="panding">Pending</option>
+        <option value="pending">Pending</option>
       </select>
     </div>
 

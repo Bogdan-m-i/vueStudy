@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  import {ref} from 'vue'
+  import {ref, watch} from 'vue'
 
   export default {
     name: "AppStatus",
@@ -32,6 +32,11 @@
 
       const className = ref(classesMap[props.type])
       const text = ref(textMap[props.type])
+
+      watch(props, (val) => {
+        className.value = classesMap[val.type]
+        text.value = textMap[val.type]
+      })
 
       return {
         className,
