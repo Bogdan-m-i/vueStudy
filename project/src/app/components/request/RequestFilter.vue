@@ -15,6 +15,8 @@
       </select>
     </div>
 
+    <AppSelect/>
+
     <button class="btn warning" v-if="isActive" @click="reset">Reset</button>
 
   </div>
@@ -22,9 +24,11 @@
 
 <script>
   import {ref, watch, computed} from 'vue'
+  import AppSelect from "../ui/AppSelect";
 
   export default {
     name: "RequestFilter",
+    components: {AppSelect},
     emits: ['update:modelValue'],
     props: ['modelValue'],
     setup(props, context) {
